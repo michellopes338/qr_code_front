@@ -36,7 +36,7 @@ export default function Trainings() {
         <>
             <div className="h-screen flex items-center justify-center">
                 {/* <h1>{data.funcionario}</h1> */}
-                {data.treinamentos.length === 0 ? (
+                {!data.treinamentos.length ? (
                     <h1 className='text-xl'>O <span className='font-bold'>{data.funcionario}</span> não possui treinamentos </h1>
                 ) : (
                     <table className="block table-auto bg-slate-100 cursor-default rounded border-orange-300 border-2">

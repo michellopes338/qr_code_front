@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { api } from "../services/api";
 
@@ -12,7 +11,7 @@ export default function Search() {
   const navigate = useNavigate();
   const [search_names, setSearch_nomes] = useState<Array<Nomes> | null>(null);
   const [is_autocomplete_hidden, setIs_autocomplete_hidden] = useState<boolean>(true);
-  const search_input_ref: React.RefObject<HTMLInputElement> = useRef();
+  const search_input_ref = useRef<HTMLInputElement>(null);
 
   function to_show_page(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -43,7 +42,7 @@ export default function Search() {
   }
 
   function select_option(selected: string) {
-    search_input_ref.current.value = selected;
+    search_input_ref.current!.value = selected;
   }
 
   return (

@@ -3,8 +3,8 @@ import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 export default function AdminLogIn() {
-    const usernameInput: React.RefObject<HTMLInputElement> = useRef();
-    const passwordInput: React.RefObject<HTMLInputElement> = useRef();
+    const usernameInput = useRef<HTMLInputElement>(null);
+    const passwordInput = useRef<HTMLInputElement>(null);
     const navigate = useNavigate();
 
     useEffect(() => {
