@@ -11,10 +11,9 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Search />} ></Route>
-        <Route path='admin' element={<AdminLogIn />}>
-          <Route path='main' element={<AdminMain />}></Route>
-        </Route>
-        <Route id='treinamentos' path=':treinamentos' element={<Trainings />}></Route>
+        <Route path='/admin' element={<AdminLogIn />}></Route>
+        <Route path='/admin/main' element={<AdminMain />}></Route>
+        <Route id='treinamentos' path='/:treinamentos' element={<Trainings />}></Route>
       </Routes>
     </BrowserRouter>
   )
