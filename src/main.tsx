@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Trainings from './Pages/Trainings.tsx';
 import AdminLogIn from './Pages/AdminLogIn.tsx';
 import AdminMain from './Pages/Admin/Main.tsx';
+import { CookiesProvider } from 'react-cookie';
 
 export default function App() {
   return (
@@ -20,7 +21,9 @@ export default function App() {
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <CookiesProvider>
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+  </CookiesProvider>
 )

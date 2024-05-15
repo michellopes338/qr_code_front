@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react"
 import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
+import { is_authenticated, login } from "../services/auth";
 
 export default function AdminLogIn() {
     const usernameInput = useRef<HTMLInputElement>(null);
@@ -8,12 +9,12 @@ export default function AdminLogIn() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (document.cookie.includes('authorization')) {
+        if (is_authenticated()) {
             navigate('main', { replace: true })
         }
     }, [navigate])
 
-    async function login(event: React.FormEvent<HTMLFormElement>) {
+    async function loginForm(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
         const username = usernameInput.current?.value;
@@ -24,8 +25,15 @@ export default function AdminLogIn() {
             password
         })
 
-        document.cookie = `authorization=${res.data.access_token};`;
-        document.cookie = `refresh=${res.data.refresh_token};`;
+        const access_token = res.data.access_token;
+        const refresh_token = res.data.refresh_token
+
+        if (!access_token || !refresh_token) {
+            console.log('Login ou senha Inválidos');
+            return;
+        }
+
+        login(access_token, refresh_token);
 
         navigate('/admin/main', { replace: true })
     }
@@ -33,7 +41,7 @@ export default function AdminLogIn() {
     return (
         <>
             <div className="h-screen flex items-center justify-center">
-                <form onSubmit={login}>
+                <form onSubmit={loginForm}>
                     <div>
                         <label htmlFor="username">Usuario</label>
                     </div>
@@ -49,7 +57,7 @@ export default function AdminLogIn() {
                     </div>
                     <br />
                     <div>
-                        <button className='shadow bg-orange-300 w-full hover:bg-orange-400 focus:shadow-outline focus:outline-none text-gray-900 font-bold py-2 px-4 rounded'>Pesquisar</button>
+                        <button className='shadow bg-orange-300 w-full hover:bg-orange-400 focus:shadow-outline focus:outline-none text-gray-900 font-bold py-2 px-4 rounded'>Entrar</button>
                     </div>
                 </form>
             </div>

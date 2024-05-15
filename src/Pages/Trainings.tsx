@@ -34,10 +34,10 @@ export default function Trainings() {
 
     return data ? (
         <>
-            <div className="h-screen flex items-center justify-center">
-                {/* <h1>{data.funcionario}</h1> */}
+            <div className="h-screen block margin-auto mx-2">
+                <h1 className='mt-4 mb-6 text-4xl font-extrabold leading-none tracking-tight text-center'>{data.funcionario}</h1>
                 {!data.treinamentos.length ? (
-                    <h1 className='text-xl'>O <span className='font-bold'>{data.funcionario}</span> não possui treinamentos </h1>
+                    <h1 className='text-xl text-center'>O <span className='font-bold'>{data.funcionario}</span> não possui treinamentos </h1>
                 ) : (
                     <table className="block table-auto bg-slate-100 cursor-default rounded border-orange-300 border-2">
                     <thead>
@@ -59,8 +59,8 @@ export default function Trainings() {
                 </table>
                 ) }
                 <br />
-                <div className='absolute bottom-0 left-0 m-5'>
-                    <button onClick={back_to_search_page} className='bg-orange-300 font-bold text-gray-900 py-2 px-4 rounded hover:bg-orange-400'>&lt; Voltar</button>
+                <div>
+                    <button onClick={back_to_search_page} className='bg-orange-300 mb-4 font-bold text-gray-900 py-2 px-4 rounded hover:bg-orange-400'>&lt; Voltar</button>
                 </div>
             </div>
         </>

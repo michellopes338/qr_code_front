@@ -63,7 +63,7 @@ export default function Search() {
               autoComplete='off'
               placeholder='3024... ou Jhon Doe'
               className="block w-full rounded-lg border border-gray-200 bg-gray-100 p-2.5 text-sm text-gray-900 placeholder-gray-500 focus:border-orange-500 focus:ring-orange-500 [&:not(:placeholder-shown):not(:focus):invalid~span]:block invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-400 valid:[&:not(:placeholder-shown)]:border-green-500"
-              pattern="[0-9a-zA-Z ]{6,}"
+              pattern="[0-9a-zA-Z ãÃ]{6,}"
               required
               type="text"/>
               <span className="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
