@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { api } from '../services/api';
+import logo from '../../public/mip-logo.png';
 
 interface Trainings {
     nome: string;
@@ -35,6 +36,9 @@ export default function Trainings() {
     return data ? (
         <>
             <div className="h-screen block margin-auto mx-2">
+                <div className='flex justify-center items-center mt-2 mb-3'>
+                    <img className='object-cover w-4/5 max-w-56' src={logo} alt="logo-mip" />
+                </div>
                 <h1 className='mt-4 mb-6 text-4xl font-extrabold leading-none tracking-tight text-center'>{data.funcionario}</h1>
                 {!data.treinamentos.length ? (
                     <h1 className='text-xl text-center'>O <span className='font-bold'>{data.funcionario}</span> não possui treinamentos </h1>
