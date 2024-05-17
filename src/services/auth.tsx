@@ -17,13 +17,12 @@ export function get_tokens() {
         refresh: cookies.get(REFRESH_TOKEN_KEY)
     };
 }
-// export const getToken = () => localStorage.getItem(TOKEN_KEY);
 
 export async function login(
     username: string,
     password: string,
 ) {
-    const response = await api.post('/auth/login', {
+    const response: any = await api.post('/auth/login', {
         username,
         password
     });

@@ -22,7 +22,7 @@ export default function AdminLogIn() {
 
         try {
             await login(username, password)
-        } catch(error) {
+        } catch(error: any) {
             setError(error.message);
             usernameInput.current!.value = '';
             passwordInput.current!.value = '';
