@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"
-import { AUTHOTIZATION_TOKEN_KEY, REFRESH_TOKEN_KEY, is_authenticated } from "../../services/auth";
+import { is_authenticated } from "../../services/auth";
 
 export default function AdminMain() {
     const navigate = useNavigate();
