@@ -23,7 +23,7 @@ export default function App() {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <CookiesProvider>
     <React.StrictMode>
-        <App />
-    </React.StrictMode>,
+      <App />
+    </React.StrictMode>
   </CookiesProvider>
 )

@@ -50,7 +50,7 @@ export default function Search() {
       <div className="h-screen flex items-center justify-center" onClick={hide_autocomplete}>
         <form onSubmit={to_show_page}>
           <div>
-            <label className="block text-gray-500 font-bold" htmlFor="search">
+            <label className="block text-gray-700 font-bold" htmlFor="search">
               Chapa / Nome
             </label>
           </div>
@@ -62,13 +62,30 @@ export default function Search() {
               id="search"
               autoComplete='off'
               placeholder='3024... ou Jhon Doe'
-              className="block w-full rounded-lg border border-gray-200 bg-gray-100 p-2.5 text-sm text-gray-900 placeholder-gray-500 focus:border-orange-500 focus:ring-orange-500 [&:not(:placeholder-shown):not(:focus):invalid~span]:block invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-400 valid:[&:not(:placeholder-shown)]:border-green-500"
+              className="block w-full rounded-2xl border border-neutral-300 bg-transparent py-4 pl-6 pr-20 text-base/6 text-neutral-950 ring-4 ring-transparent transition placeholder:text-neutral-500 focus:border-neutral-950 focus:outline-none focus:ring-neutral-950/5"
               pattern="[0-9a-zA-Z ãÃ]{6,}"
               required
               type="text"/>
               <span className="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 Insira um valor valido
               </span>
+
+              <div className="absolute inset-y-1 right-1 flex justify-end">
+                <button
+                  type="submit"
+                  aria-label="Submit"
+                  className="flex aspect-square h-full items-center justify-center rounded-xl bg-neutral-950 text-white transition hover:bg-neutral-800"
+                  >
+                  <svg viewBox="0 0 16 6" aria-hidden="true" className="w-4">
+                    <path
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M16 3 10 .5v2H0v1h10v2L16 3Z"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
 
               <div className="w-full h-60 border border-gray-300 rounded-md bg-white absolute overflow-y-auto" hidden={is_autocomplete_hidden}>
                 {search_names?.map((obj) => {
@@ -77,10 +94,6 @@ export default function Search() {
                   )
                 })}
               </div>
-          </div>
-          <br />
-          <div>
-            <button className='shadow bg-orange-300 w-full hover:bg-orange-400 focus:shadow-outline focus:outline-none text-gray-900 font-bold py-2 px-4 rounded'>Pesquisar</button>
           </div>
         </form>
       </div>

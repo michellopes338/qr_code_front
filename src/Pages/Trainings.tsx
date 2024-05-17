@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { api } from '../services/api';
-import logo from '../../public/mip-logo.png';
+import logo from '../assets/mip-logo.png';
 
 interface Trainings {
     nome: string;

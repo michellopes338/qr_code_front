@@ -1,4 +1,5 @@
 import { Cookies } from "react-cookie";
+import { api } from "./api";
 
 export const AUTHOTIZATION_TOKEN_KEY = "authorization";
 export const REFRESH_TOKEN_KEY = "refresh";
@@ -18,12 +19,25 @@ export function get_tokens() {
 }
 // export const getToken = () => localStorage.getItem(TOKEN_KEY);
 
-export function login(
-    authorization_token: string,
-    refresh_token: string,
+export async function login(
+    username: string,
+    password: string,
 ) {
-    cookies.set(AUTHOTIZATION_TOKEN_KEY, authorization_token, { path: '/' });
-    cookies.set(REFRESH_TOKEN_KEY, refresh_token, { path: '/' });
+    const response = await api.post('/auth/login', {
+        username,
+        password
+    });
+
+    if (response.status !== 200) {
+        console.log('teste');
+        throw new Error(response.response.data.message);
+    }
+
+    const authorization_token = response.data.access_token;
+    const refresh_token = response.data.refresh_token;
+
+    cookies.set(AUTHOTIZATION_TOKEN_KEY, authorization_token, { path: '/', sameSite: true });
+    cookies.set(REFRESH_TOKEN_KEY, refresh_token, { path: '/', sameSite: true });
 }
 
 export function logout() {

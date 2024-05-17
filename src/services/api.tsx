@@ -1,4 +1,5 @@
 import axios from "axios";
+import { redirect } from 'react-router-dom';
 
 function decodeCookies() {
     const cookies = document.cookie.split('; ')
@@ -9,14 +10,11 @@ function decodeCookies() {
     return Object.fromEntries(entries);
 }
 
-function redirect(pathname: string) {
-    window.location.replace(pathname);
-}
-
 const cookies = decodeCookies()
 
 export const api = axios.create({
-    baseURL: 'https://qrcode-production-7224.up.railway.app',
+    // baseURL: 'https://qrcode-production-7224.up.railway.app',
+    baseURL: 'http://localhost:3000',
     timeout: 1000
 })
 
@@ -43,7 +41,7 @@ api.interceptors.response.use(
 
         if (error.response.status === 401 && !cookies.authorization) {
             document.cookie = '';
-            redirect('/admin/login')
+            redirect('/admin')
         }
 
         return error;
