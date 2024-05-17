@@ -6,7 +6,7 @@ export default function AdminLogIn() {
     const usernameInput = useRef<HTMLInputElement>(null);
     const passwordInput = useRef<HTMLInputElement>(null);
     const navigate = useNavigate();
-    const [error, setError] = useState('');
+    const [error, setError] = useState<string>('');
 
     useEffect(() => {
         if (is_authenticated()) {
