@@ -17,6 +17,12 @@ export const api = axios.create({
     // baseURL: 'http://localhost:3000',
     timeout: 1000,
     headers: {
+        patch: {
+          "Content-Type": "application/json",
+        },
+        post: {
+          "Content-Type": "application/json",
+        },
         "Accept": 'application/json'
     }
 })
