@@ -35,8 +35,8 @@ export async function login(
     const authorization_token = response.data.access_token;
     const refresh_token = response.data.refresh_token;
 
-    cookies.set(AUTHOTIZATION_TOKEN_KEY, authorization_token, { path: '/', sameSite: true });
-    cookies.set(REFRESH_TOKEN_KEY, refresh_token, { path: '/', sameSite: true });
+    cookies.set(AUTHOTIZATION_TOKEN_KEY, authorization_token, { path: '/', sameSite: 'lax' });
+    cookies.set(REFRESH_TOKEN_KEY, refresh_token, { path: '/', sameSite: 'lax' });
 }
 
 export function logout() {
