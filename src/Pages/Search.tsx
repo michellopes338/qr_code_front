@@ -24,6 +24,11 @@ export default function Search() {
   async function autocomplete(event: React.ChangeEvent<HTMLInputElement>) {
     const regex = /^[a-zA-Z]+$/;
     const value = event.target.value;
+
+    if (value.length < 3) {
+      return;
+    }
+
     const is_chapa = regex.test(value[0]); // test if first char of input value is numeric
 
     if (!is_chapa) {

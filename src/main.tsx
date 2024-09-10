@@ -6,6 +6,7 @@ import Trainings from './Pages/Trainings.tsx';
 import AdminLogIn from './Pages/AdminLogIn.tsx';
 import AdminMain from './Pages/Admin/Main.tsx';
 import { CookiesProvider } from 'react-cookie';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 export default function App() {
   return (
@@ -20,10 +21,14 @@ export default function App() {
   )
 }
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <CookiesProvider>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </CookiesProvider>
+  <QueryClientProvider client={queryClient}>
+    <CookiesProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </CookiesProvider>
+  </QueryClientProvider>
 )
