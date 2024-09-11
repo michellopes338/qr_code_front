@@ -54,7 +54,7 @@ export default function Search() {
         await queryClient.prefetchQuery(["treinamentos", matricula], async () => {
           const res = await api.get(`treinamentos/de/${matricula}`);
           return res.data
-        })
+        }, { staleTime: 1000 * 60 * 60 * 24 })
       }
     }
   }
