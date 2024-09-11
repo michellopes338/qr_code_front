@@ -47,7 +47,7 @@ export default function Trainings() {
                     <img className='object-cover w-4/5 max-w-56' src={logo} alt="logo-mip" />
                 </div>
                 <h1 className='mt-4 mb-6 text-4xl font-extrabold leading-none tracking-tight text-center'>{data!.funcionario}</h1>
-                {data!.treinamentos.length <= 1 ? (
+                {data!.treinamentos.length < 1 ? (
                     <h1 className='text-xl text-center'>O <span className='font-bold'>{data!.funcionario}</span> não possui treinamentos </h1>
                 ) : (
                     <table className="block table-auto bg-slate-100 cursor-default rounded border-orange-300 border-2">
