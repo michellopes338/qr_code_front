@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../services/api";
+import { useQueryClient } from "react-query";
 
 interface Nomes {
   nome: string;
@@ -12,6 +13,7 @@ export default function Search() {
   const [search_names, setSearch_nomes] = useState<Array<Nomes> | null>(null);
   const [is_autocomplete_hidden, setIs_autocomplete_hidden] = useState<boolean>(true);
   const search_input_ref = useRef<HTMLInputElement>(null);
+  const queryClient = useQueryClient();
 
   function to_show_page(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -42,6 +44,21 @@ export default function Search() {
     setSearch_nomes(names);
   }
 
+  async function prefetchTraining(event: React.ChangeEvent<HTMLInputElement>) {
+    if (event.target.value.length === 8) {
+      const matricula = event.target.value
+      await queryClient.prefetchQuery("treinametos", async () => {
+        const res = await api.get(`treinamentos/de/${matricula}`);
+        return res.data
+      })
+    }
+  }
+
+  async function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
+    autocomplete(event);
+    prefetchTraining(event)
+  }
+
   function hide_autocomplete() {
     setIs_autocomplete_hidden(true);
   }
@@ -63,7 +80,7 @@ export default function Search() {
             <input
               name='search'
               ref={search_input_ref}
-              onChange={autocomplete}
+              onChange={handleInput}
               id="search"
               autoComplete='off'
               placeholder='3024... ou Jhon Doe'
