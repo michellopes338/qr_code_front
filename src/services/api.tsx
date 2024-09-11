@@ -15,7 +15,7 @@ const cookies = decodeCookies()
 export const api = axios.create({
     baseURL: 'https://qrcode-production-7224.up.railway.app',
     // baseURL: 'http://localhost:3000',
-    timeout: 1000,
+    timeout: 5000,
     headers: {
         patch: {
           "Content-Type": "application/json",
@@ -24,7 +24,7 @@ export const api = axios.create({
           "Content-Type": "application/json",
         },
         "Accept": 'application/json'
-    }
+    },
 })
 
 api.interceptors.response.use(
