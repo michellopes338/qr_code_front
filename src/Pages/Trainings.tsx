@@ -19,10 +19,10 @@ export default function Trainings() {
     const { treinamentos } = useParams();
     const navigate = useNavigate();
 
-    const { data, isError, isLoading } = useQuery("treinamentos", async (): Promise<Person> => {
+    const { data, isError, isLoading } = useQuery(["treinamentos", treinamentos], async (): Promise<Person> => {
         const res = await api.get(`treinamentos/de/${treinamentos}`);
         return res.data
-    })
+    }, { staleTime: 1000 * 60 * 60 * 24, keepPreviousData: true })
 
     if (isError) {
         return (
