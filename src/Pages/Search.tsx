@@ -47,7 +47,7 @@ export default function Search() {
   async function prefetchTraining(event: React.ChangeEvent<HTMLInputElement>) {
     if (event.target.value.length === 8) {
       const matricula = event.target.value
-      await queryClient.prefetchQuery("treinametos", async () => {
+      await queryClient.prefetchQuery("treinamentos", async () => {
         const res = await api.get(`treinamentos/de/${matricula}`);
         return res.data
       })
