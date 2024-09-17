@@ -28,7 +28,7 @@ export default function Trainings() {
     { staleTime: 1000 * 60 * 60 * 24, keepPreviousData: true },
   );
 
-  if (isError || !data) {
+  if (isError) {
     return (
       <h1 className="mt-4 mb-6 text-4xl font-extrabold leading-none tracking-tight text-center">
         Algo deu errado!
