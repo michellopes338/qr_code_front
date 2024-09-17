@@ -23,6 +23,8 @@ export default function Trainings() {
       const res = await api.get(`treinamentos/de/${treinamentos}`);
       if (res.status === 200) {
         return res.data;
+      } else {
+        throw Error("Algo deu errado")
       }
     },
     { staleTime: 1000 * 60 * 60 * 24, keepPreviousData: true },
