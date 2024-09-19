@@ -69,7 +69,7 @@ export default function Trainings() {
             treinamentos{" "}
           </h1>
         ) : (
-          <table className="block table-auto bg-slate-100 cursor-default rounded border-orange-300 border-2">
+          <table className="rounded mx-auto bg-slate-100 cursor-default border-orange-300 border-2">
             <thead>
               <tr className="">
                 <th className="py-3 bg-orange-200">Treinamento</th>
