@@ -45,24 +45,24 @@ export default function Search() {
     setSearch_nomes(names);
   }
 
-  async function prefetchTraining(event: React.ChangeEvent<HTMLInputElement>) {
-    if (event.target.value.length === 8) {
-      const matricula = event.target.value;
+  // async function prefetchTraining(event: React.ChangeEvent<HTMLInputElement>) {
+  //   if (event.target.value.length === 8) {
+  //     const matricula = event.target.value;
 
-      const cached = queryClient.getQueryData(["treinamentos", matricula]);
+  //     const cached = queryClient.getQueryData(["treinamentos", matricula]);
 
-      if (!cached) {
-        await queryClient.prefetchQuery(
-          ["treinamentos", matricula],
-          async () => {
-            const res = await api.get(`treinamentos/de/${matricula}`);
-            return res.data;
-          },
-          { staleTime: 1000 * 60 * 60 * 24 },
-        );
-      }
-    }
-  }
+  //     if (!cached) {
+  //       await queryClient.prefetchQuery(
+  //         ["treinamentos", matricula],
+  //         async () => {
+  //           const res = await api.get(`treinamentos/de/${matricula}`);
+  //           return res.data;
+  //         },
+  //         { staleTime: 1000 * 60 * 60 * 24 },
+  //       );
+  //     }
+  //   }
+  // }
 
   async function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
     autocomplete(event);
