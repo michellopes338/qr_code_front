@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../services/api";
-import { useQueryClient } from "react-query";
+// import { useQueryClient } from "react-query";
 
 interface Nomes {
   nome: string;
@@ -14,7 +14,7 @@ export default function Search() {
   const [is_autocomplete_hidden, setIs_autocomplete_hidden] =
     useState<boolean>(true);
   const search_input_ref = useRef<HTMLInputElement>(null);
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
   function to_show_page(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
