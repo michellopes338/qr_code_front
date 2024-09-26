@@ -66,7 +66,7 @@ export default function Search() {
 
   async function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
     autocomplete(event);
-    prefetchTraining(event);
+    // prefetchTraining(event);
   }
 
   function hide_autocomplete() {

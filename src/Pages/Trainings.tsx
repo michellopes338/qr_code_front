@@ -22,7 +22,13 @@ export default function Trainings() {
     async (): Promise<Person | undefined> => {
       const res = await api.get(`treinamentos/de/${treinamentos}`);
       if (res.status === 200) {
-        return res.data;
+        const data = res.data;
+
+        data.treinamentos = data.treinamentos.sort((a: {validade: string}, b: {validade: string}) => {
+          return new Date(b.validade).valueOf() - new Date(a.validade).valueOf()
+        })
+
+        return data;
       } else {
         throw Error("Algo deu errado")
       }
