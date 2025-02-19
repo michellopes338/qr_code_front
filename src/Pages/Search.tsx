@@ -51,7 +51,7 @@ export default function Search() {
         <form onSubmit={to_show_page}>
           <div>
             <label className="block text-gray-700 font-bold" htmlFor="search">
-              Chapa / Nome
+              Chapa
             </label>
           </div>
           <div className="relative">
@@ -61,11 +61,12 @@ export default function Search() {
               onChange={autocomplete}
               id="search"
               autoComplete='off'
-              placeholder='3024... ou Jhon Doe'
+              placeholder='3024...'
               className="block w-full rounded-2xl border border-neutral-300 bg-transparent py-4 pl-6 pr-20 text-base/6 text-neutral-950 ring-4 ring-transparent transition placeholder:text-neutral-500 focus:border-neutral-950 focus:outline-none focus:ring-neutral-950/5"
-              pattern="[0-9a-zA-Z ãÃ]{6,}"
+              pattern="[0-9]"
               required
-              type="text"/>
+              min="0"
+              type="number"/>
               <span className="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
                 Insira um valor valido
               </span>
