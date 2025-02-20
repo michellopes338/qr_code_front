@@ -13,6 +13,7 @@ function decodeCookies() {
 const cookies = decodeCookies();
 
 export const api = axios.create({
+<<<<<<< HEAD
   baseURL: 'https://qrcode-production-7224.up.railway.app',
 //   baseURL: "http://localhost:3000",
   timeout: 5000,
@@ -26,6 +27,15 @@ export const api = axios.create({
     Accept: "application/json",
   },
 });
+=======
+    baseURL: 'https://qrcode-production-7224.up.railway.app',
+    // baseURL: 'http://localhost:3000',
+    timeout: 1000,
+    headers: {
+        "Content-Type": 'application/json'
+    }
+})
+>>>>>>> development
 
 api.interceptors.response.use(
   (res) => {
